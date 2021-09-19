@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<div class="home contents">
+    <h1> ML Models </h1>
+
+    <ul>
+        <li><a class="model-link" href="{% url 'titanic-model' %}">Titanic model</a></li>
+    </ul>
+</div>
+{% endblock %}
