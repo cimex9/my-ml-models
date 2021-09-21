@@ -41,4 +41,4 @@ class TitanicAPI(View):
 
         result = model.predict([[pclass, sex, age, fare]])
         result = bool(result[0])
-        return JsonResponse({"survived": result}, status=201)
+        return JsonResponse({"survived": result}, status=200)
