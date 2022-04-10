@@ -46,6 +46,6 @@ def mnist_database(request):
         pixel_map = list(map(lambda x: round(x/255, 5), [x for x in image.getdata()]))
         result = pixel_map
 
-        # messages.add_message(request, messages.INFO, result)
+        messages.add_message(request, messages.INFO, result)
 
-    return render(request, 'models/mnist_database_model.html', {"result": result})
+    return render(request, 'models/mnist_database_model.html')
