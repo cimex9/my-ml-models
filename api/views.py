@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views import View
 
-from main.utils import model
+from main.utils import titanic_model
 
 
 def api_redirect(request):
@@ -16,7 +16,6 @@ def documentation(request):
 
 
 class TitanicAPI(View):
-    #                        API
     def get(self, request):
         try:
             data = json.loads(request.body.decode("utf-8"))
@@ -39,6 +38,6 @@ class TitanicAPI(View):
             data = {"message": "Invalid JSON schema!"}
             return JsonResponse(data, status=400)
 
-        result = model.predict([[pclass, sex, age, fare]])
+        result = titanic_model.predict([[pclass, sex, age, fare]])
         result = bool(result[0])
         return JsonResponse({"survived": result}, status=200)

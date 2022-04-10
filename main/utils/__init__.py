@@ -1,1 +1,2 @@
-from .ml_model import model
+from .titanic_model import titanic_model
+

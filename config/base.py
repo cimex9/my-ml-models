@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-crq0h5_#*8!!88jv-8o008@kn+q@i#viq$c&^w_7#7c^bw90s+'
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["my-ml-models.herokuapp.com", "localhost", "127.0.0.1", "djangoapp.ml", "www.djangoapp.ml"]
 
@@ -104,5 +104,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [STATIC_DIR]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SECURE_SSL_REDIRECT = True

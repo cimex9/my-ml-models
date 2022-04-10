@@ -31,6 +31,7 @@ a.redirect-home:hover {
 .home.contents ul li {
     list-style: none;
     font-size: 30px;
+    margin-bottom: 20px;
 }
 
 .home.contents ul li a {
@@ -88,4 +89,10 @@ form.model-form button {
 
 .form-result {
     margin: 40px;
+}
+
+#canvas-app {
+    width: 560px;
+    height: 560px;
+    background: #000;
 }
