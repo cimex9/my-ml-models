@@ -3,6 +3,8 @@
 import os
 import sys
 
+from torch import nn
+
 
 def main():
     """Run administrative tasks."""
@@ -19,4 +21,13 @@ def main():
 
 
 if __name__ == '__main__':
+    class MnistModel(nn.Module):
+        def __init__(self, input_size, num_classes):
+            super().__init__()
+            self.linear = nn.Linear(input_size, num_classes)
+
+        def forward(self, xb):
+            xb = xb.reshape(-1, 784)
+            return self.linear(xb)
+
     main()

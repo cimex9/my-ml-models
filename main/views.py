@@ -1,14 +1,10 @@
-import base64
-import json
-import binascii
-import io
-
-from PIL import Image
+import torch
 
 from django.shortcuts import render
 from django.contrib import messages
 
 from .utils import titanic_model
+from .utils.mnist_database_model import preprocess_image, predict_mnist_model
 
 
 def index(request):
@@ -36,16 +32,12 @@ def titanic_model(request):
 
 
 def mnist_database(request):
-    result = "1"
+    probabilities = None
     if request.method == 'POST':
-        result = request.POST.get("imgPath").replace("data:image/jpeg;base64,", "")
-        result = io.BytesIO(base64.b64decode(result))
+        base64_encoded_image = request.POST.get("imgPath")
+        pixel_map = preprocess_image(base64_encoded_image)
+        prediction, probabilities = predict_mnist_model(pixel_map)
 
-        image = Image.open(result).convert("L")
-        image = image.resize((28, 28))
-        pixel_map = list(map(lambda x: round(x/255, 5), [x for x in image.getdata()]))
-        result = pixel_map
+        messages.add_message(request, messages.INFO, prediction)
 
-        messages.add_message(request, messages.INFO, result)
-
-    return render(request, 'models/mnist_database_model.html')
+    return render(request, 'models/mnist_database_model.html', {"probabilities": probabilities})

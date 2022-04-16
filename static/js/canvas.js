@@ -13,7 +13,7 @@ canvas.addEventListener('mousemove', function(e) {
   mouse.y = e.pageY - this.offsetTop;
 }, false);
 
-ctx.lineWidth = 20;
+ctx.lineWidth = 40;
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 ctx.strokeStyle = '#fff';

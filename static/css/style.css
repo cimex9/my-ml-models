@@ -96,3 +96,13 @@ form.model-form button {
     height: 560px;
     background: #000;
 }
+
+.probabilities {
+    margin: 40px;
+    font-size: 22.5px;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none;
+}
