@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} MNIST database model {% endblock %}
+
+{% block content %}
+
+
+<div class="model-contents">
+    <h1>MNIST database model</h1>
+    <h2> Precision: ~92% </h2>
+
+    <div id="canvas-app">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <form method="POST" action="{% url 'mnist-database' %}" class="model-form">
+        {% csrf_token %}
+        <input type="hidden" name="imgPath">
+        <button type="submit" onclick="updateImgPath()" style="margin: 20px 0 0 -50px">Predict</button>
+        <button type="button" onclick="clearCanvas()" style="margin: 20px 0 0 0">Clear</button>
+        {% if probabilities %}
+            <button type="button" onclick="showProbabilities()" style="margin: 20px 0 0 0">Probabilities</button>
+        {% endif %}
+    </form>
+
+</div>
+
+{% for msg in messages %}
+    <h1 class="form-result">Prediction: {{msg}}</h1>
+{% endfor %}
+
+<div class="probabilities hidden">
+    {% if probabilities %}
+        {% for probability in probabilities %}
+            <p>{{probability}}</p>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<script src="{% static 'js/canvas.js' %}"></script>
+<script>
+    function showProbabilities() {
+        let probabilities = document.querySelector(".probabilities");
+        if (probabilities.classList.contains("hidden")) {
+            probabilities.classList.remove("hidden");
+        } else {
+            probabilities.classList.add("hidden");
+        }
+    }
+</script>
+{% endblock %}

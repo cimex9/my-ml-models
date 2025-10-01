@@ -3,10 +3,15 @@
 import os
 import sys
 
+from dotenv import load_dotenv
+from torch import nn
+
+
+load_dotenv()
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.dev')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -19,4 +24,13 @@ def main():
 
 
 if __name__ == '__main__':
+    class MnistModel(nn.Module):
+        def __init__(self, input_size, num_classes):
+            super().__init__()
+            self.linear = nn.Linear(input_size, num_classes)
+
+        def forward(self, xb):
+            xb = xb.reshape(-1, 784)
+            return self.linear(xb)
+
     main()
