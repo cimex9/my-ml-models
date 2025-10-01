@@ -3,8 +3,11 @@
 import os
 import sys
 
+from dotenv import load_dotenv
 from torch import nn
 
+
+load_dotenv()
 
 def main():
     """Run administrative tasks."""

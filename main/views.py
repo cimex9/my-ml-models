@@ -1,9 +1,7 @@
-import torch
-
 from django.shortcuts import render
 from django.contrib import messages
 
-from .utils import titanic_model
+from .utils import titanic_model as _titanic_model
 from .utils.mnist_database_model import preprocess_image, predict_mnist_model
 
 
@@ -14,14 +12,14 @@ def index(request):
 def titanic_model(request):
     if request.method == 'GET':
         pclass = request.GET.get("Pclass")
-        sex = request.GET.get("Sex")
+        gender = request.GET.get("gender")
         age = request.GET.get("Age")
         fare = request.GET.get("Fare")
 
-        sex = 1 if sex == 'Male' else 0 if sex == 'Female' else sex
+        gender = 1 if gender == 'Male' else 0 if gender == 'Female' else gender
 
         try:
-            result = titanic_model.predict([[pclass, sex, age, fare]])
+            result = _titanic_model.predict([[pclass, gender, age, fare]])
             result = str(bool(result[0]))
 
             messages.add_message(request, messages.INFO, result)
