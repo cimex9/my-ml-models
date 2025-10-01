@@ -7,9 +7,10 @@ This repo contains a web interface for a couple of my pre-trained simple ML mode
 
 ### 1. Handwritten digits classification trained on MNIST database (with a web canvas).
 > **Note.**
+> 
 > The model was trained on an image dataset where the digits are centered. Currently, there is no logic on the client side to "centralize" handwritten digits before inference; therefore, the results may be inaccurate if the digits deviate from the center.
 > 
-> Additionally, other forms of input image (canvas) transformation may be required before inference.
+> Additionally, other forms of input image (canvas) transformations before inference may improve the results.
 
 ![docs/images/mnist_prediction_3.png](docs/images/mnist_prediction_3.png)
 
@@ -55,7 +56,8 @@ Run the django server:
 ```bash
 python manage.py runserver
 ```
-The output should be (excluding warnings):
+
+The output should be similar to:
 ```
 Watching for file changes with StatReloader
 Performing system checks...
