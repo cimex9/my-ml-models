@@ -2,6 +2,8 @@
 
 This repo contains a web interface for a couple of my previously trained simple ML/NN models. The feature engineering and models training code for these models is lost in oblivion ![doomperson](docs/images/secret.png)
 
+The trained model files are available as serialized `pkl` files under `models/` directory.
+
 
 ## About models
 
@@ -13,6 +15,8 @@ This repo contains a web interface for a couple of my previously trained simple 
 > Additionally, other forms of input image (canvas) transformations before inference may improve the results.
 
 ![docs/images/mnist_prediction_3.png](docs/images/mnist_prediction_3.png)
+
+There is a button "Probabilities" for seeing likelihood for each digit in percents where the highest percent is the "Prediction":
 
 ![docs/images/mnist_prediction_3_probabilities.png](docs/images/mnist_prediction_3_probabilities.png)
 

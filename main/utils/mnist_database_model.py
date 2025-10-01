@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from PIL import Image
 
 
-mnist_model = joblib.load('main/utils/MNIST_model.pkl')
+mnist_model = joblib.load('models/MNIST_model.pkl')
 
 
 def preprocess_image(base64_encoded_image: str):
