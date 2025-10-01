@@ -1,6 +1,6 @@
 # my-ml-models
 
-This repo contains a web interface for a couple of my pre-trained simple ML models. The feature engineering and models training code for these models is lost in oblivion ![doomperson](docs/images/secret.png)
+This repo contains a web interface for a couple of my previously trained simple ML/NN models. The feature engineering and models training code for these models is lost in oblivion ![doomperson](docs/images/secret.png)
 
 
 ## About models
